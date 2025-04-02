@@ -200,7 +200,7 @@ export default function ItemsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold text-gray-900">Sneaker Collection</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Quản lý sản phẩm</h1>
           <button
             onClick={() => {
               setNewItem({ picUrl: [], size: [] });
@@ -209,7 +209,7 @@ export default function ItemsPage() {
             }}
             className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
           >
-            Add New Item
+            Thêm sản phẩm mới
           </button>
         </div>
 
@@ -232,7 +232,7 @@ export default function ItemsPage() {
           </div>
           <input
             type="text"
-            placeholder="Search by title..."
+            placeholder="Tìm kiếm theo tên sản phẩm..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="p-2 border rounded-md w-full sm:w-64"
@@ -244,26 +244,26 @@ export default function ItemsPage() {
           <table className="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
             <thead>
               <tr className="bg-gray-200 text-gray-700 text-sm uppercase">
-                <th className="py-3 px-4 text-left">Image</th>
-                <th className="py-3 px-4 text-left">Title</th>
-                <th className="py-3 px-4 text-left">Category</th>
+                <th className="py-3 px-4 text-left">Ảnh</th>
+                <th className="py-3 px-4 text-left">Tên sp</th>
+                <th className="py-3 px-4 text-left">Hãng</th>
                 <th className="py-3 px-4 text-left cursor-pointer" onClick={() => handleSort("price")}>
-                  Price
+                  Giá bán
                   {sortConfig?.key === "price" && (
                     sortConfig.direction === "asc" ? <ChevronUpIcon className="h-4 w-4 inline-block ml-1" /> : <ChevronDownIcon className="h-4 w-4 inline-block ml-1" />
                   )}
                 </th>
-                <th className="py-3 px-4 text-left">Old Price</th>
-                <th className="py-3 px-4 text-left">Discount</th>
+                <th className="py-3 px-4 text-left">Giá gốc</th>
+                <th className="py-3 px-4 text-left">Giảm giá</th>
                 <th className="py-3 px-4 text-left cursor-pointer" onClick={() => handleSort("rating")}>
-                  Rating
+                  Đánh giá
                   {sortConfig?.key === "rating" && (
                     sortConfig.direction === "asc" ? <ChevronUpIcon className="h-4 w-4 inline-block ml-1" /> : <ChevronDownIcon className="h-4 w-4 inline-block ml-1" />
                   )}
                 </th>
-                <th className="py-3 px-4 text-left">Reviews</th>
-                <th className="py-3 px-4 text-left">Sizes</th>
-                <th className="py-3 px-4 text-left">Actions</th>
+                <th className="py-3 px-4 text-left">Bình luận</th>
+                <th className="py-3 px-4 text-left">Kích cỡ</th>
+                <th className="py-3 px-4 text-left">Thao tác</th>
               </tr>
             </thead>
             <tbody>
@@ -352,17 +352,17 @@ export default function ItemsPage() {
               disabled={currentPage === 1}
               className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md disabled:opacity-50"
             >
-              Previous
+              Trang trước
             </button>
             <span className="text-gray-700">
-              Page {currentPage} of {totalPages}
+              Trang {currentPage} trên {totalPages}
             </span>
             <button
               onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
               className="px-4 py-2 bg-gray-200 text-gray-700 rounded-md disabled:opacity-50"
             >
-              Next
+              Trang sau
             </button>
           </div>
         )}
@@ -370,7 +370,7 @@ export default function ItemsPage() {
         {/* Nếu không có sản phẩm */}
         {filteredItems.length === 0 && (
           <p className="text-center text-gray-500 mt-10">
-            No items found.
+            Không có sản phẩm
           </p>
         )}
 
@@ -493,14 +493,14 @@ export default function ItemsPage() {
                   onClick={addPicUrl}
                   className="text-blue-600 hover:underline text-sm"
                 >
-                  + Add Image URL
+                  + Thêm Image URL
                 </button>
               </div>
 
               {/* Danh sách kích thước */}
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Sizes
+                  Kích cỡ
                 </label>
                 {(selectedItem ? selectedItem.size : newItem.size || []).map(
                   (size, index) => (
@@ -518,7 +518,7 @@ export default function ItemsPage() {
                   onClick={addSize}
                   className="text-blue-600 hover:underline text-sm"
                 >
-                  + Add Size
+                  + Thêm kích thước
                 </button>
               </div>
 
@@ -527,13 +527,13 @@ export default function ItemsPage() {
                   onClick={selectedItem ? handleUpdateItem : handleAddItem}
                   className="flex-1 bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
                 >
-                  {selectedItem ? "Update" : "Add"}
+                  {selectedItem ? "Cập nhật" : "Thêm"}
                 </button>
                 <button
                   onClick={() => setIsModalOpen(false)}
                   className="flex-1 bg-gray-300 text-gray-700 py-2 rounded-md hover:bg-gray-400"
                 >
-                  Cancel
+                  Huỷ
                 </button>
               </div>
             </div>
